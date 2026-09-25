@@ -16,30 +16,63 @@ function TechnologyCard({
   );
 
   return (
-    <div>
-      <img src={tech.icon} alt={tech.name} />
+    <div className="border border-gray-200 rounded-xl p-5 shadow-sm">
 
-      <h2>{tech.name}</h2>
+      {/* Icon and Badge */}
+      <div className="flex items-center justify-between mb-4">
+        <img
+          src={tech.icon}
+          alt={tech.name}
+          className="w-12 h-12"
+        />
 
-      <p>{tech.description}</p>
+        <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">
+          {tech.badge}
+        </span>
+      </div>
 
-      <p>{tech.category}</p>
+      {/* Name */}
+      <h2 className="text-xl font-bold mb-2">
+        {tech.name}
+      </h2>
 
-      <p>{tech.difficulty}</p>
+      {/* Description */}
+      <p className="text-gray-600 mb-4">
+        {tech.description}
+      </p>
 
-      <p>⭐ {tech.rating}</p>
+      {/* Category and Difficulty */}
+      <div className="flex gap-2 mb-4">
+        <span className="bg-gray-100 px-3 py-1 rounded-full text-sm">
+          {tech.category}
+        </span>
 
+        <span className="bg-gray-100 px-3 py-1 rounded-full text-sm">
+          {tech.difficulty}
+        </span>
+      </div>
+
+      {/* Rating */}
+      <p className="mb-4">
+        <span className="text-yellow-500">★</span>{" "}
+        {tech.rating}
+      </p>
+
+      {/* Add Button */}
       <button
         disabled={isAdded}
         onClick={() => onAdd(tech)}
-        className={`px-4 py-2 rounded-lg font-medium ${
+        className={`w-full py-2 rounded-lg font-medium ${
           isAdded
             ? "bg-gray-300 text-gray-500 cursor-not-allowed"
             : "bg-black text-white hover:bg-gray-800"
         }`}
       >
-        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
+        {isAdded
+          ? "✓ Added to Stack"
+          : "Add to Stack"}
       </button>
+
     </div>
   );
 }
