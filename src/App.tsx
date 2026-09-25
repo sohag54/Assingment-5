@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import type { Technology } from "./types";
 import TechnologyCard from "./TechnologyCard";
+import YourStack from "./YourStack";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -15,6 +20,9 @@ function App() {
     );
 
     if (isAlreadyAdded) {
+      toast.warning(
+        "Technology is already in your stack!"
+      );
       return;
     }
 
@@ -22,6 +30,30 @@ function App() {
       ...previousStack,
       tech,
     ]);
+
+    toast.success("Technology added to stack!");
+  };
+
+  // Remove one technology from stack
+  const handleRemoveFromStack = (id: string) => {
+    setStack((previousStack) =>
+      previousStack.filter(
+        (item) => item.id !== id
+      )
+    );
+
+    toast.success(
+      "Technology removed from stack!"
+    );
+  };
+
+  // Remove all technologies from stack
+  const handleRemoveAll = () => {
+    setStack([]);
+
+    toast.success(
+      "All technologies removed from stack!"
+    );
   };
 
   useEffect(() => {
@@ -30,14 +62,19 @@ function App() {
         const response = await fetch("/data.json");
 
         if (!response.ok) {
-          throw new Error("Failed to load technology data");
+          throw new Error(
+            "Failed to load technology data"
+          );
         }
 
-        const data: Technology[] = await response.json();
+        const data: Technology[] =
+          await response.json();
 
         setTechnologies(data);
       } catch (error) {
-        setError("Something went wrong while loading the data.");
+        setError(
+          "Something went wrong while loading the data."
+        );
       } finally {
         setLoading(false);
       }
@@ -55,23 +92,35 @@ function App() {
   }
 
   return (
-  <div>
-    <h1>Dev Stack</h1>
-
-    <p>Total Technologies: {technologies.length}</p>
-
     <div>
-      {technologies.map((tech) => (
-        <TechnologyCard
-          key={tech.id}
-          tech={tech}
+      <ToastContainer />
+
+      <h1>Dev Stack</h1>
+
+      <p>
+        Total Technologies: {technologies.length}
+      </p>
+
+      <div>
+        <div>
+          {technologies.map((tech) => (
+            <TechnologyCard
+              key={tech.id}
+              tech={tech}
+              stack={stack}
+              onAdd={handleAddToStack}
+            />
+          ))}
+        </div>
+
+        <YourStack
           stack={stack}
-          onAdd={handleAddToStack}
+          onRemove={handleRemoveFromStack}
+          onRemoveAll={handleRemoveAll}
         />
-      ))}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 export default App;

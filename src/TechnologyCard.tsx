@@ -32,6 +32,11 @@ function TechnologyCard({
       <button
         disabled={isAdded}
         onClick={() => onAdd(tech)}
+        className={`px-4 py-2 rounded-lg font-medium ${
+          isAdded
+            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+            : "bg-black text-white hover:bg-gray-800"
+        }`}
       >
         {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
