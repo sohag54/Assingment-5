@@ -7,6 +7,7 @@ import type { Technology } from "./types";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -101,6 +102,8 @@ function App() {
 
     {/* Navbar */}
     <Navbar />
+    {/* Hero Section */}
+    <Hero />
 
     {/* Main content */}
     <div className="max-w-7xl mx-auto px-4 py-10">
