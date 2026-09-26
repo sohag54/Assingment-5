@@ -1,32 +1,87 @@
-# React + TypeScript + Vite
+# Dev Stack Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Dev Stack Builder is a responsive web application where users can explore different development technologies and build their own technology stack.
 
-Currently, two official plugins are available:
+## Live Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[Live Link](YOUR_LIVE_LINK)
 
-## React Compiler
+## GitHub Repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://github.com/sohag54/Assingment-5
 
-## Expanding the Oxlint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- React
+- TypeScript
+- Tailwind CSS
+- React-Toastify
+- Vite
+- JSON
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## Features
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 1. Explore Technologies
+
+Users can explore different development technologies including frontend, backend, database, programming languages, styling, DevOps, and tools.
+
+### 2. Build Your Own Stack
+
+Users can add technologies to their stack, remove individual technologies, or remove all selected technologies.
+
+### 3. Responsive Design
+
+The website is responsive and works properly on desktop, tablet, and mobile devices.
+
+## React Questions
+
+### 1. What is JSX, and why is it used?
+
+JSX is a syntax used in React that allows us to write HTML-like code inside JavaScript or TypeScript. It makes React components easier to write and understand.
+
+### 2. What is the difference between State and Props?
+
+Props are used to pass data from a parent component to a child component.
+
+State is used to store and manage data that can change inside a component.
+
+### 3. What is the use of useState in React?
+
+`useState` is a React Hook used to create and manage state inside a component.
+
+### 4. What is the use of useEffect in React?
+
+`useEffect` is a React Hook used to perform side effects in a component, such as fetching data from a JSON file or API.
+
+### 5. How does conditional rendering work in React?
+
+Conditional rendering means showing different UI based on a condition.
+
+For example:
+
+```tsx
+{stack.length === 0 ? (
+  <p>Your stack is empty.</p>
+) : (
+  <p>Technologies selected.</p>
+)}
+
+###6 What is the purpose of keys in React lists?
+
+Keys help React identify which items in a list have changed, been added, or removed.
+
+For example:
+
+{technologies.map((tech) => (
+  <TechnologyCard
+    key={tech.id}
+    tech={tech}
+  />
+))}
+
+
+### 7. What is the difference between controlled and uncontrolled components?
+
+A controlled component has its form data controlled by React state.
+
+An uncontrolled component stores its form data in the DOM itself.
