@@ -8,6 +8,7 @@ import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -160,6 +161,8 @@ function App() {
         </div>
 
       </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

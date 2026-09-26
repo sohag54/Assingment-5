@@ -12,31 +12,29 @@ function YourStack({
   onRemoveAll,
 }: YourStackProps) {
   return (
-    <div className="border border-red-200 rounded-xl p-5 shadow-sm bg-white">
+    <div className="border border-gray-200 rounded-2xl p-5 shadow-sm bg-white">
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-5">
+      <div className="mb-5">
 
-        <h2 className="text-lg font-bold">
+        <h2 className="text-lg font-bold text-gray-900">
           Your Stack
         </h2>
 
-        <span className="text-sm text-gray-500">
-          {stack.length} selected
-        </span>
+        <p className="text-sm text-gray-400 mt-1">
+          {stack.length === 0
+            ? "No technologies selected yet."
+            : `${stack.length} technologies selected.`}
+        </p>
 
       </div>
 
       {/* Empty State */}
       {stack.length === 0 ? (
-        <div className="border border-dashed border-gray-300 rounded-lg p-8 text-center">
+        <div className="border border-dashed border-gray-300 rounded-xl h-24 flex items-center justify-center text-center">
 
-          <p className="text-gray-500 text-sm">
-            No technologies added yet.
-          </p>
-
-          <p className="text-gray-400 text-xs mt-2">
-            Add technologies to build your stack.
+          <p className="text-sm text-gray-400">
+            Your stack is empty.
           </p>
 
         </div>
@@ -62,13 +60,15 @@ function YourStack({
                   />
 
                   <div>
-                    <h3 className="text-sm font-medium">
+
+                    <h3 className="text-sm font-medium text-gray-900">
                       {tech.name}
                     </h3>
 
                     <p className="text-xs text-gray-500">
                       {tech.category}
                     </p>
+
                   </div>
 
                 </div>
@@ -76,7 +76,7 @@ function YourStack({
                 {/* Remove Button */}
                 <button
                   onClick={() => onRemove(tech.id)}
-                  className="text-gray-400 hover:text-red-500"
+                  className="text-gray-400 hover:text-red-500 transition"
                 >
                   ✕
                 </button>
@@ -86,13 +86,13 @@ function YourStack({
 
           </div>
 
-          {/* Remove All */}
+          {/* Remove All Button */}
           <button
-  onClick={onRemoveAll}
-  className="w-full mt-5 border border-red-200 text-red-500 py-2 rounded-lg text-sm hover:bg-red-50 transition"
->
-  Remove All
-</button>
+            onClick={onRemoveAll}
+            className="w-full mt-5 border border-red-200 text-red-500 py-2 rounded-lg text-sm hover:bg-red-50 transition"
+          >
+            Remove All
+          </button>
 
         </div>
       )}
