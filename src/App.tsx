@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import type { Technology } from "./types";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "./YourStack";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
@@ -95,54 +96,51 @@ function App() {
   }
 
   return (
-    <div>
-      <ToastContainer />
+  <div>
+    <ToastContainer />
 
-      {/* Temporary heading */}
-      <h1>Dev Stack</h1>
+    {/* Navbar */}
+    <Navbar />
 
-      <p>
-        Total Technologies: {technologies.length}
-      </p>
+    {/* Main content */}
+    <div className="max-w-7xl mx-auto px-4 py-10">
 
-      {/* Main content */}
-      <div className="max-w-7xl mx-auto px-4 py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        {/* Technology Cards */}
+        <div className="lg:col-span-3">
 
-          {/* Technology Cards */}
-          <div className="lg:col-span-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-              {technologies.map((tech) => (
-                <TechnologyCard
-                  key={tech.id}
-                  tech={tech}
-                  stack={stack}
-                  onAdd={handleAddToStack}
-                />
-              ))}
-
-            </div>
-          </div>
-
-          {/* Your Stack */}
-          <div className="lg:col-span-1">
-
-            <YourStack
-              stack={stack}
-              onRemove={handleRemoveFromStack}
-              onRemoveAll={handleRemoveAll}
-            />
+            {technologies.map((tech) => (
+              <TechnologyCard
+                key={tech.id}
+                tech={tech}
+                stack={stack}
+                onAdd={handleAddToStack}
+              />
+            ))}
 
           </div>
 
         </div>
 
+        {/* Your Stack */}
+        <div className="lg:col-span-1">
+
+          <YourStack
+            stack={stack}
+            onRemove={handleRemoveFromStack}
+            onRemoveAll={handleRemoveAll}
+          />
+
+        </div>
+
       </div>
+
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
