@@ -7,7 +7,7 @@ function Hero() {
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10">
 
         {/* Left Side */}
-        <div>
+        <div className="text-center lg:text-left">
 
           <h1 className="text-4xl md:text-5xl font-bold leading-tight">
             Build Your Ideal
@@ -18,14 +18,14 @@ function Hero() {
             </span>
           </h1>
 
-          <p className="text-gray-600 mt-5 max-w-xl leading-relaxed">
+          <p className="text-gray-600 mt-5 max-w-xl mx-auto lg:mx-0 leading-relaxed">
             Explore frontend, backend, database, and tooling options,
             compare them side by side, and put together the stack that
             fits your next project.
           </p>
 
           {/* Buttons */}
-          <div className="flex gap-3 mt-8">
+          <div className="flex justify-center lg:justify-start gap-3 mt-8">
 
             <button className="brand-gradient text-white px-5 py-2.5 rounded-lg font-medium">
               Explore Technologies

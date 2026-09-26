@@ -16,56 +16,63 @@ function TechnologyCard({
   );
 
   return (
-    <div className="border border-gray-200 rounded-xl p-5 shadow-sm">
+    <div className="border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition bg-white">
 
       {/* Icon and Badge */}
       <div className="flex items-center justify-between mb-4">
+
         <img
           src={tech.icon}
           alt={tech.name}
-          className="w-12 h-12"
+          className="w-10 h-10 object-contain"
         />
 
-        <span className="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">
+        <span className="bg-blue-50 text-blue-500 px-3 py-1 rounded-full text-xs">
           {tech.badge}
         </span>
+
       </div>
 
       {/* Name */}
-      <h2 className="text-xl font-bold mb-2">
+      <h2 className="text-lg font-bold text-gray-900 mb-2">
         {tech.name}
       </h2>
 
       {/* Description */}
-      <p className="text-gray-600 mb-4">
+      <p className="text-sm text-gray-500 leading-relaxed min-h-[42px] mb-4">
         {tech.description}
       </p>
 
-      {/* Category and Difficulty */}
-      <div className="flex gap-2 mb-4">
-        <span className="bg-gray-100 px-3 py-1 rounded-full text-sm">
-          {tech.category}
+      {/* Category, Difficulty and Rating */}
+      <div className="flex items-center justify-between mb-4">
+
+        <div className="flex items-center gap-2">
+
+          <span className="bg-gray-100 text-gray-500 px-2 py-1 rounded text-xs">
+            {tech.category}
+          </span>
+
+          <span className="text-xs text-gray-500">
+            {tech.difficulty}
+          </span>
+
+        </div>
+
+        <span className="text-sm text-gray-600">
+          <span className="text-yellow-400">★</span>{" "}
+          {tech.rating}
         </span>
 
-        <span className="bg-gray-100 px-3 py-1 rounded-full text-sm">
-          {tech.difficulty}
-        </span>
       </div>
-
-      {/* Rating */}
-      <p className="mb-4">
-        <span className="text-yellow-500">★</span>{" "}
-        {tech.rating}
-      </p>
 
       {/* Add Button */}
       <button
         disabled={isAdded}
         onClick={() => onAdd(tech)}
-        className={`w-full py-2 rounded-lg font-medium ${
+        className={`w-full py-2.5 rounded-lg text-sm font-medium ${
           isAdded
             ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-            : "bg-black text-white hover:bg-gray-800"
+            : "bg-gray-950 text-white hover:bg-gray-800"
         }`}
       >
         {isAdded

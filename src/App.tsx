@@ -97,53 +97,71 @@ function App() {
   }
 
   return (
-  <div>
-    <ToastContainer />
+    <div>
+      <ToastContainer />
 
-    {/* Navbar */}
-    <Navbar />
-    {/* Hero Section */}
-    <Hero />
+      {/* Navbar */}
+      <Navbar />
 
-    {/* Main content */}
-    <div className="max-w-7xl mx-auto px-4 py-10">
+      {/* Hero Section */}
+      <Hero />
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      {/* Technology Section */}
+      <div className="max-w-7xl mx-auto px-4 py-10">
 
-        {/* Technology Cards */}
-        <div className="lg:col-span-3">
+        {/* Section Heading */}
+        <div className="mb-10">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <h2 className="text-3xl md:text-4xl font-bold">
+            Explore the{" "}
+            <span className="text-brand-gradient">
+              Technologies
+            </span>
+          </h2>
 
-            {technologies.map((tech) => (
-              <TechnologyCard
-                key={tech.id}
-                tech={tech}
-                stack={stack}
-                onAdd={handleAddToStack}
-              />
-            ))}
+          <p className="text-gray-500 mt-3">
+            Pick one technology per category to build your ideal stack.
+          </p>
+
+        </div>
+
+        {/* Technology Cards + Your Stack */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+          {/* Technology Cards */}
+          <div className="lg:col-span-3">
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+              {technologies.map((tech) => (
+                <TechnologyCard
+                  key={tech.id}
+                  tech={tech}
+                  stack={stack}
+                  onAdd={handleAddToStack}
+                />
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* Your Stack */}
+          <div className="lg:col-span-1">
+
+            <YourStack
+              stack={stack}
+              onRemove={handleRemoveFromStack}
+              onRemoveAll={handleRemoveAll}
+            />
 
           </div>
 
         </div>
 
-        {/* Your Stack */}
-        <div className="lg:col-span-1">
-
-          <YourStack
-            stack={stack}
-            onRemove={handleRemoveFromStack}
-            onRemoveAll={handleRemoveAll}
-          />
-
-        </div>
-
       </div>
-
     </div>
-  </div>
-);
+  );
 }
 
 export default App;
